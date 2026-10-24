@@ -32,7 +32,9 @@ curlによる外部リクエストで確認。
 
 HTMLの実測Cache-Controlはpublic, max-age=0, must-revalidate。更新には再ビルド・デプロイが必要。CDN全拠点の即時反映までは検証していない。
 
-最初のurllibリクエストは403だったがcurlとIABでは200。差の原因は未特定。すべてのHTTPクライアントでの取得を保証するものではない。
+urllibの標準User-Agentは403、本文error code: 1010。curlにPython-urllib/3.9を指定しても403を再現した。通常のcurlとIABでは200。Cloudflare公式の1010説明はブラウザー署名による拒否としている。Browser Integrity Check関連と考えられるが、実アカウントの該当ルールは未確認。安全機能の変更はしていない。全RSSクライアントで取得できるとは報告しない。
+
+公式資料 https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1010/ 、https://developers.cloudflare.com/waf/tools/browser-integrity-check/ （2026-10-25確認）。
 
 ## bado.info独自ドメイン
 
