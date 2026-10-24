@@ -6,3 +6,4 @@
 - UIはgihyo.jp、Publickey、JSer.infoの公開UIを確認し情報構造を参考にする。コピーしない。参照URLと採用点を記録する。
 - 架空のニュースや写真で埋めない。出典と考察を区別する。draftを生成物へ含めない。
 - check/test/buildと実画面で検証し、未検証は明記する。
+- 独自ドメインは未取得のため接続対象外。現在の公開URLはhttps://bado-info.amtt.workers.dev。取得後の明示依頼があるまでドメイン操作をしない。

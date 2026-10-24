@@ -48,10 +48,12 @@ sources:
     assert.match(article, /検証本文/);
     assert.match(article, /https:\/\/example.com\//);
     assert.match(article, /2026年10月25日/);
-    assert.match(article, /rel="canonical" href="https:\/\/bado.info\/articles\/2026\/public\/"/);
+    assert.match(article, /rel="canonical" href="https:\/\/bado-info\.amtt\.workers\.dev\/articles\/2026\/public\/"/);
     assert.doesNotMatch(article, /<script/);
     assert.match(rss, /検証専用の公開記事/);
     assert.match(rss, /&amp;/);
+    assert.match(rss, /<link>https:\/\/bado-info\.amtt\.workers\.dev\/articles\/2026\/public\/<\/link>/);
+    assert.doesNotMatch(home + article + rss, /https:\/\/bado\.info/);
     for (const output of [home, rss]) assert.doesNotMatch(output, /検証専用の下書き|既定値も下書き/);
     await assert.rejects(access(join(workspace, 'dist/articles/draft/index.html')));
     await assert.rejects(access(join(workspace, 'dist/articles/default-draft/index.html')));

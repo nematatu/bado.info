@@ -38,6 +38,14 @@ urllibの標準User-Agentは403、本文error code: 1010。curlにPython-urllib/
 
 ## bado.info独自ドメイン
 
-Voidのdomain listは空。`void domain add bado.info` は実行前に自動承認レビューで拒否された。理由は、デプロイ許可だけではDNS・既存サイトの接続先へ影響する独自ドメイン操作の明示承認にならないため。追加の承認を確認中であり、ドメイン接続完了とは扱わない。
+未取得とのユーザー申告に従い、独自ドメイン接続は対象外。DNS・ドメイン登録・domain addは実行しない。以前の追加承認待ちは終了した。
 
-canonicalとRSS内の記事URLは当初指定のhttps://bado.infoを使用している。独自ドメイン未接続の間はworkers.devの動作確認用公開URLと区別する。
+canonicalとRSS内のURLは、実際に配信しているhttps://bado-info.amtt.workers.devへ統一。Astroのsite設定1箇所から両方を生成し、テストではホーム・記事・RSSにhttps://bado.infoが残らないことと、記事URLの新しいホストを検証する。
+
+2026-10-25の修正後にdevbox run check/test/buildが成功。Voidで再デプロイ成功。外部curlでトップ・運営方針のcanonicalとRSS channel/linkがすべてworkers.devになったこと、通常ページ200・不存在記事と管理URL404を確認した。検証用記事と旧ドメインURLは応答に含まれなかった。
+
+## RSSクライアントの追加確認
+
+標準urllibのUser-AgentはCloudflare 1010/403。同じPythonクライアントにbado-info-feed-check/1.0という識別用User-Agentを付けると200でXML解析成功、item 0。サイト側に認証は追加していない。
+
+Cloudflare公式のBIC設定手順はzoneに対する設定を示す。workers.devでこの拒否をアプリ設定だけで変更できる公式手順は確認できていない。セキュリティ設定を変更したり、RSSクライアント全体の動作を保証したりはしない。現在の受け入れ確認はcurl、IAB、識別用User-Agentを付けたurllibでの取得まで。

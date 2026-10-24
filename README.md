@@ -46,7 +46,7 @@ sources:
 
 ## 公開
 
-生成先は `dist/` です。Void CLIによる静的公開手順を下記に記載しています。今回の明示許可に基づき公開リポジトリへのpushとCloudflareへの静的デプロイを実施しました。bado.info独自ドメインの接続は別途確認中です。
+生成先は `dist/` です。Void CLIによる静的公開手順を下記に記載しています。今回の明示許可に基づき公開リポジトリへのpushとCloudflareへの静的デプロイを実施しました。bado.infoは未取得とのご申告に従い、独自ドメイン接続は今回の対象外です。canonicalとRSSは上記workers.devの公開URLを使います。
 
 Void 1.2.1を静的ファイル公開用の開発依存として固定しています。Astroの実行時プラグイン・Cloudflare adapterは不要です。運営者が本番公開する際は、Cloudflareアカウントと公開先を確認し、ローカルの `dist/` を見てから次を実行します。実際の公開結果はdocs/10-deployment.mdに記録しています。
 
