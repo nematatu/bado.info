@@ -61,3 +61,11 @@ Void 1.2.1の静的デプロイは、アップロード後の検証でinheritanc
 公開先は引き続き https://bado-info.amtt.workers.dev/ 。IABの375/1280pxで新しいmasthead、Georgiaのサイト名（32/40px）、新ナビ、横はみ出しなし、正しいcanonicalを確認。screenshots/published-1280.pngとhome-375.pngを更新。公開記事0件。検証用記事はローカルだけ。
 
 復旧で参照した公式資料：https://developers.cloudflare.com/workers/versions-and-deployments/ 、https://developers.cloudflare.com/workers/wrangler/commands/workers/ 。今後同じ停止が出ても未検証の候補をそのまま有効化しない。
+
+## Markdown表示テストの公開（2026-10-25）
+
+追加指示「テストでマークダウン入れて」により、d96d8b5でMarkdown表示テスト1件を追加してpush。原稿のタイトル・要約・本文にテストであることを明記し、架空の試合結果や写真は置いていない。見出し、段落、強調、番号付き・番号なしリスト、引用、リンク、コードを含む。
+
+Devbox checkは0 errors/0 warnings/0 hints、testは1件成功、build成功。公開用Markdownから/articles/markdown-test/を生成。Voidは今回もアップロード後にinheritance-source-changedで停止した。候補版64554574-0c28-46d8-b892-761c4631e354のバインディング、準備完了IDを確認し、プレビューのトップ・記事・運営方針・RSS・CSSがdistと完全一致することを検証後、既存Wranglerで同じ候補版へ100%切り替えた。Void停止の根本原因は未解決。
+
+公開後もトップ・記事HTMLとdistの一致、RSSがテスト記事1件であることを確認。IABで記事と一覧へのリンクを確認し、記事を375/768/1280pxで実測。clientWidth/scrollWidthは360/360、753/753、1265/1265で横スクロールなし。markdown-test-375.pngとmarkdown-test-1280.pngを保存。包括的な支援技術監査は未実施。独立レビューで公開原稿の公開阻害指摘なし、READMEと要件表の古い0件記録を修正した。
