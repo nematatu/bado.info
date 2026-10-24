@@ -49,3 +49,15 @@ canonicalとRSS内のURLは、実際に配信しているhttps://bado-info.amtt.
 標準urllibのUser-AgentはCloudflare 1010/403。同じPythonクライアントにbado-info-feed-check/1.0という識別用User-Agentを付けると200でXML解析成功、item 0。サイト側に認証は追加していない。
 
 Cloudflare公式のBIC設定手順はzoneに対する設定を示す。workers.devでこの拒否をアプリ設定だけで変更できる公式手順は確認できていない。セキュリティ設定を変更したり、RSSクライアント全体の動作を保証したりはしない。現在の受け入れ確認はcurl、IAB、識別用User-Agentを付けたurllibでの取得まで。
+
+## UI再設計の公開（2026-10-25）
+
+92aae41をmainへpush。中央のセリフ体マストヘッド、独立したナビ、日付・見出し・要約を縦にまとめた一覧、詳細の概要と出典領域を実装。Devbox check/test/build成功。
+
+Void 1.2.1の静的デプロイは、アップロード後の検証でinheritance-source-changedとして停止した。CLI文面には「No version was uploaded」とあったが、Cloudflare上には候補版f46dce59-5145-4024-8a98-af928ebc2395が存在した。停止の根本原因は未確定。安全確認を無効化したり依存を改変したりはしていない。
+
+稼働版と候補版のバインディングがASSETSと__VOID_VERSION_METADATAだけであることを確認。Void候補版のプレビューでトップHTML・CSS・運営方針・RSSが手元のdistと完全一致し、/__void/readyが同じ候補versionIdを返すことを確認した。復旧操作として既存のWrangler 4.152.0のversions deployで、この検証済み候補版へ100%の公開トラフィックを切り替えた。新たなビルド方式へ置き換えてはいない。ドメイン・DNS・非バージョン設定の変更なし。
+
+公開先は引き続き https://bado-info.amtt.workers.dev/ 。IABの375/1280pxで新しいmasthead、Georgiaのサイト名（32/40px）、新ナビ、横はみ出しなし、正しいcanonicalを確認。screenshots/published-1280.pngとhome-375.pngを更新。公開記事0件。検証用記事はローカルだけ。
+
+復旧で参照した公式資料：https://developers.cloudflare.com/workers/versions-and-deployments/ 、https://developers.cloudflare.com/workers/wrangler/commands/workers/ 。今後同じ停止が出ても未検証の候補をそのまま有効化しない。
