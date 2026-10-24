@@ -2,12 +2,12 @@
   "version": 1,
   "source": {
     "name": "bado-info",
-    "compatibility_date": "2026-10-25"
+    "compatibility_date": "2026-10-24"
   },
   "resolved": {
     "name": "bado-info",
-    "compatibility_date": "2026-10-25",
+    "compatibility_date": "2026-10-24",
     "account_id": "b55858b0d5c41b055859b1e758ddf3a2"
   },
-  "text": "{\n  \"name\": \"bado-info\",\n  \"compatibility_date\": \"2026-10-25\",\n  \"account_id\": \"b55858b0d5c41b055859b1e758ddf3a2\"\n}\n"
+  "text": "{\n  \"name\": \"bado-info\",\n  \"compatibility_date\": \"2026-10-24\",\n  \"account_id\": \"b55858b0d5c41b055859b1e758ddf3a2\"\n}\n"
 }

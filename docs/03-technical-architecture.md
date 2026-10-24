@@ -1,7 +1,7 @@
 # 技術構成
 2026-10-25。既存状態は未追跡のDevbox設定と.envrcのみ。既存.envrcとDevbox lockは保持。
 
-最初の依頼はVoid/D1/R2を含むSSR構成だったが、追加指示で単純なSSGへ変更。Astro 7.4.2のContent CollectionsでMarkdownを読み、静的HTMLとRSSをdistへ出力する。実行時Worker、認証、DB、R2、Cronは不要となり削除。Void 1.2.1を静的公開用CLIとして開発依存に固定し、deploy --helpで--dirを確認。本番接続・公開は未実施。
+最初の依頼はVoid/D1/R2を含むSSR構成だったが、追加指示で単純なSSGへ変更。Astro 7.4.2のContent CollectionsでMarkdownを読み、静的HTMLとRSSをdistへ出力する。実行時Worker、認証、DB、R2、Cronは不要となり削除。Void 1.2.1を静的公開用CLIとして開発依存に固定し、deploy --helpで--dirを確認。今回の明示許可で本番接続・静的公開を実施。10-deployment.md参照。
 
 ```mermaid
 flowchart LR

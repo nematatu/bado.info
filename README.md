@@ -1,6 +1,12 @@
 # bado.info
 
-バドミントンのニュースと考察を掲載するAstro SSGサイトです。2026-10-25の追加指示に従い、認証・管理画面・DB・R2・Cronを使う構成から、Markdownファイルを編集してビルドする構成へ変更しました。本番未デプロイです。
+バドミントンのニュースと考察を掲載するAstro SSGサイトです。2026-10-25の追加指示に従い、認証・管理画面・DB・R2・Cronを使う構成から、Markdownファイルを編集してビルドする構成へ変更しました。2026-10-25にVoid経由でCloudflareへ静的サイトをデプロイしました。
+
+公開URL: https://bado-info.amtt.workers.dev/
+
+公開リポジトリ: https://github.com/nematatu/bado.info
+
+原依頼との機能差分はdocs/09-requirements-audit.md、公開検証はdocs/10-deployment.mdを参照してください。
 
 ## ローカル実行
 
@@ -40,9 +46,9 @@ sources:
 
 ## 公開
 
-生成先は `dist/` です。Void CLIによる静的公開手順を下記に記載しています。本番接続とホスティング設定は未実施です。push、本番設定、公開は運営者が行ってください。
+生成先は `dist/` です。Void CLIによる静的公開手順を下記に記載しています。今回の明示許可に基づき公開リポジトリへのpushとCloudflareへの静的デプロイを実施しました。bado.info独自ドメインの接続は別途確認中です。
 
-Void 1.2.1を静的ファイル公開用の開発依存として固定しています。Astroの実行時プラグイン・Cloudflare adapterは不要です。運営者が本番公開する際は、Cloudflareアカウントと公開先を確認し、ローカルの `dist/` を見てから次を実行します。この作業では実行していません。
+Void 1.2.1を静的ファイル公開用の開発依存として固定しています。Astroの実行時プラグイン・Cloudflare adapterは不要です。運営者が本番公開する際は、Cloudflareアカウントと公開先を確認し、ローカルの `dist/` を見てから次を実行します。実際の公開結果はdocs/10-deployment.mdに記録しています。
 
 ```sh
 devbox run build
