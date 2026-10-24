@@ -5,18 +5,20 @@ import { publishedArticles, dateLabel, articleUrl } from '../lib/articles';
 const articles = await publishedArticles();
 ---
 <Base>
-  <h1>記事一覧</h1>
-  {articles.length ? (
-    <ol class="article-list">
-      {articles.map(article => (
-        <li>
-          <time datetime={article.data.publishedAt.toISOString()}>{dateLabel(article.data.publishedAt)}</time>
-          <div>
-            <h2><a href={articleUrl(article.id)}>{article.data.title}</a></h2>
-            <p>{article.data.summary}</p>
-          </div>
-        </li>
-      ))}
-    </ol>
-  ) : <p class="empty">公開された記事はまだありません。</p>}
+  <section aria-labelledby="latest-heading">
+    <div class="section-heading"><h1 id="latest-heading">新着記事</h1></div>
+    {articles.length ? (
+      <ol class="article-list">
+        {articles.map(article => (
+          <li>
+            <article>
+              <time datetime={article.data.publishedAt.toISOString()}>{dateLabel(article.data.publishedAt)}</time>
+              <h2><a href={articleUrl(article.id)}>{article.data.title}</a></h2>
+              <p>{article.data.summary}</p>
+            </article>
+          </li>
+        ))}
+      </ol>
+    ) : <p class="empty">公開された記事はまだありません。</p>}
+  </section>
 </Base>
