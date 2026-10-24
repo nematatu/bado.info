@@ -1,0 +1,86 @@
+{
+  "lockfile_version": "1",
+  "packages": {
+    "github:NixOS/nixpkgs/nixpkgs-unstable": {
+      "last_modified": "2026-10-23T19:01:35Z",
+      "resolved": "github:NixOS/nixpkgs/901c54c08bdc20e00c2b3c73716b97497b1b3c74?lastModified=1792782095&narHash=sha256-KtL%2Bp7f7jY34cO5Mt0%2FhUZNE3spnINk7hwpYxM2XLC4%3D"
+    },
+    "nodejs@26.12.0": {
+      "last_modified": "2026-10-20T14:23:57Z",
+      "plugin_version": "0.0.5",
+      "resolved": "github:NixOS/nixpkgs/5adc50831c259f87faeb09ddf930d43597197473#nodejs_26",
+      "source": "devbox-search",
+      "version": "26.12.0",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/yjzdldldpv7vdzp1jvhfs5hkjf7rvmvb-nodejs-26.12.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/yjzdldldpv7vdzp1jvhfs5hkjf7rvmvb-nodejs-26.12.0"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/9xd2irpn7qxzq5kjidpxa2w5g5jprcwf-nodejs-26.12.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/9xd2irpn7qxzq5kjidpxa2w5g5jprcwf-nodejs-26.12.0"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/l57mwn9jgc7vw8ibwjrw8d376jxplly3-nodejs-26.12.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/l57mwn9jgc7vw8ibwjrw8d376jxplly3-nodejs-26.12.0"
+        }
+      }
+    },
+    "pnpm_10@10.34.5": {
+      "last_modified": "2026-10-20T14:23:57Z",
+      "resolved": "github:NixOS/nixpkgs/5adc50831c259f87faeb09ddf930d43597197473#pnpm_10",
+      "source": "devbox-search",
+      "version": "10.34.5",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/fvsbl7fka850i2wvkkga2bwkd7pdi8xg-pnpm-10.34.5",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/fvsbl7fka850i2wvkkga2bwkd7pdi8xg-pnpm-10.34.5"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/jr3y9l9x9pdai3nvyvi1s1ckfigx72bq-pnpm-10.34.5",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/jr3y9l9x9pdai3nvyvi1s1ckfigx72bq-pnpm-10.34.5"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/4qhzpac8ybzq2gyy6v0ma5vdbgswql1m-pnpm-10.34.5",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/4qhzpac8ybzq2gyy6v0ma5vdbgswql1m-pnpm-10.34.5"
+        }
+      }
+    }
+  }
+}

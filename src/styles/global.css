@@ -1,0 +1,77 @@
+@import '@radix-ui/colors/slate.css';
+@import '@radix-ui/colors/teal.css';
+
+:root {
+  --background: var(--slate-1);
+  --text: var(--slate-12);
+  --muted: var(--slate-11);
+  --border: var(--slate-7);
+  --link: var(--teal-12);
+  --focus: var(--teal-10);
+  --text-small: .9375rem;
+  --text-body: 1.0625rem;
+  --text-heading: 1.3125rem;
+  --text-title: 1.75rem;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --page-width: 960px;
+  --reading-width: 720px;
+  --rule: .5px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+  color: var(--text);
+  background: var(--background);
+  line-height: 1.9;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; font-size: var(--text-body); }
+a { color: var(--link); text-underline-offset: .2em; overflow-wrap: anywhere; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
+.shell { max-width: var(--page-width); margin-inline: auto; padding-inline: var(--space-4); }
+.site-header { border-bottom: var(--rule) solid var(--border); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); min-height: 88px; }
+.brand { font-size: var(--text-title); font-weight: 750; letter-spacing: -.04em; color: var(--text); text-decoration: none; }
+nav { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+nav a { display: inline-flex; align-items: center; min-width: 44px; min-height: 44px; font-size: var(--text-small); color: var(--muted); }
+main { padding-block: var(--space-5); }
+h1 { font-size: var(--text-title); margin: 0 0 var(--space-4); }
+h2 { font-size: var(--text-heading); margin: var(--space-4) 0 var(--space-2); }
+h3, h4, h5, h6 { font-size: var(--text-body); margin: var(--space-3) 0 var(--space-2); }
+h1, h2, h3, h4, h5, h6 { line-height: 1.5; overflow-wrap: anywhere; }
+p { margin: 0 0 var(--space-3); }
+time, .meta { font-size: var(--text-small); color: var(--muted); }
+.article-list { padding: 0; margin: 0; list-style: none; }
+.article-list li { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: var(--space-3); border-top: var(--rule) solid var(--border); padding-block: var(--space-3); }
+.article-list h2 { margin: 0 0 var(--space-1); }
+.article-list h2 a { display: block; min-height: 44px; color: var(--text); text-decoration: none; }
+.article-list h2 a:hover { text-decoration: underline; }
+.article-list p { margin: 0; color: var(--muted); }
+.empty { border-block: var(--rule) solid var(--border); padding-block: var(--space-4); color: var(--muted); margin: 0; }
+.reading { max-width: var(--reading-width); margin-inline: auto; }
+.reading > a { display: inline-flex; align-items: center; min-height: 44px; }
+.reading h1 { margin-top: var(--space-2); }
+.prose { overflow-wrap: anywhere; }
+.prose img { max-width: 100%; height: auto; }
+.prose pre { overflow: auto; background: var(--slate-3); padding: var(--space-2); }
+.prose blockquote { margin-inline: 0; padding-inline: var(--space-3); border-left: var(--rule) solid var(--border); color: var(--muted); }
+.sources { border-top: var(--rule) solid var(--border); margin-top: var(--space-5); }
+.sources ul { padding-left: var(--space-3); }
+.site-footer { padding-block: var(--space-3); border-top: var(--rule) solid var(--border); font-size: var(--text-small); }
+.site-footer a { display: inline-flex; align-items: center; min-height: 44px; color: var(--muted); }
+.skip { position: absolute; top: -100px; left: var(--space-2); background: var(--background); padding: 12px; }
+.skip:focus { top: var(--space-1); }
+
+@media (max-width: 768px) {
+  .shell { padding-inline: var(--space-3); }
+  .article-list li { grid-template-columns: 1fr; gap: var(--space-1); }
+  .header-inner, nav { gap: var(--space-2); }
+}
+@media (max-width: 480px) {
+  .shell { padding-inline: 20px; }
+  .header-inner { align-items: flex-start; flex-direction: column; gap: 0; padding-block: 12px; }
+  main { padding-block: var(--space-4); }
+}

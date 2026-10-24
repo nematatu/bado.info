@@ -1,0 +1,33 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { publishedArticles, dateLabel } from '../../lib/articles';
+
+export async function getStaticPaths() {
+  return (await publishedArticles()).map(article => ({
+    params: { slug: article.id }, props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+---
+<Base title={article.data.title} description={article.data.summary}>
+  <article class="reading">
+    <a href="/">記事一覧</a>
+    <h1>{article.data.title}</h1>
+    <p class="meta">
+      <time datetime={article.data.publishedAt.toISOString()}>{dateLabel(article.data.publishedAt)}</time>
+      {article.data.updatedAt && <>
+        更新 <time datetime={article.data.updatedAt.toISOString()}>{dateLabel(article.data.updatedAt)}</time>
+      </>}
+    </p>
+    <div class="prose"><Content /></div>
+    {article.data.sources.length > 0 && (
+      <section class="sources">
+        <h2>出典</h2>
+        <ul>{article.data.sources.map(source => <li><a href={source.url}>{source.title}</a></li>)}</ul>
+      </section>
+    )}
+  </article>
+</Base>

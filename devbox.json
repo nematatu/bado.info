@@ -1,0 +1,21 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.18.4/.schema/devbox.schema.json",
+  "packages": [
+    "nodejs@26.12.0",
+    "pnpm_10@10.34.5"
+  ],
+  "shell": {
+    "init_hook": [
+      "echo 'Welcome to devbox!' > /dev/null"
+    ],
+    "scripts": {
+      "dev": "pnpm dev",
+      "check": "pnpm check",
+      "test": "pnpm test",
+      "build": "pnpm build",
+      "preview": "pnpm preview",
+      "install": "pnpm install --frozen-lockfile",
+      "versions": "command -v node && node --version && command -v pnpm && pnpm --version"
+    }
+  }
+}
