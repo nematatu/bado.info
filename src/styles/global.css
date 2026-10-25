@@ -1,7 +1,14 @@
+@import '@cloudflare/kumo/styles/standalone';
 @import '@radix-ui/colors/sand.css';
 @import '@radix-ui/colors/jade.css';
 
 :root {
+  --color-kumo-base: var(--sand-1);
+  --text-color-kumo-default: var(--sand-12);
+  --text-color-kumo-subtle: var(--sand-11);
+  --text-color-kumo-link: var(--jade-12);
+  --color-kumo-focus: var(--jade-10);
+  --text-base: var(--text-body);
   --background: var(--sand-1);
   --text: var(--sand-12);
   --muted: var(--sand-11);
@@ -28,18 +35,18 @@
 
 * { box-sizing: border-box; }
 body { margin: 0; font-size: var(--text-body); }
-a { color: var(--link); text-underline-offset: .25em; overflow-wrap: anywhere; }
+a { transition: none; color: var(--link); text-underline-offset: .25em; overflow-wrap: anywhere; }
 a:hover { text-decoration-thickness: 2px; }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
 .shell { width: min(var(--page-width), calc(100% - 80px)); margin-inline: auto; }
 .masthead { padding-top: var(--space-4); text-align: center; }
-.wordmark { display: inline-block; margin-bottom: var(--space-3); font: 700 var(--text-title)/1.2 Georgia, 'Times New Roman', serif; letter-spacing: -.055em; color: var(--text); text-decoration: none; }
+.wordmark { display: inline-block; min-height: 44px; margin-bottom: var(--space-3); font: 700 var(--text-title)/1.2 Georgia, 'Times New Roman', serif; letter-spacing: -.055em; color: var(--text); text-decoration: none; }
 .site-nav { display: flex; justify-content: center; flex-wrap: wrap; column-gap: var(--space-4); border-block: var(--rule) solid var(--border); }
 .site-nav a { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 48px; color: var(--muted); font-size: var(--text-small); text-decoration: none; }
 .site-nav a:hover, .site-nav a[aria-current=page] { color: var(--text); text-decoration: underline; text-underline-offset: 7px; }
 .site-nav a[aria-current=page] { font-weight: 700; }
 main { max-width: var(--reading-width); padding-block: var(--space-5) 64px; }
-h1, h2, h3, h4, h5, h6 { line-height: 1.6; overflow-wrap: anywhere; }
+h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.6; overflow-wrap: anywhere; }
 h1 { margin: 0 0 var(--space-3); font-size: var(--text-title); letter-spacing: -.025em; text-wrap: balance; }
 h2 { font-size: var(--text-heading); margin: var(--space-5) 0 var(--space-2); }
 h3, h4, h5, h6 { font-size: var(--text-body); margin: var(--space-4) 0 var(--space-2); }
@@ -62,12 +69,16 @@ time, .meta { font-size: var(--text-small); color: var(--muted); }
 .article-summary { margin: 0; color: var(--muted); }
 .prose { overflow-wrap: anywhere; line-height: 2; }
 .prose > :first-child { margin-top: 0; }
+.prose ul { list-style: disc; padding-left: var(--space-3); margin-bottom: var(--space-3); }
+.prose ol { list-style: decimal; padding-left: var(--space-3); margin-bottom: var(--space-3); }
+.prose a { display: inline; }
 .prose img { display: block; max-width: 100%; height: auto; margin-block: var(--space-4); }
 .prose pre { overflow: auto; background: var(--sand-3); padding: var(--space-2); }
 .prose blockquote { margin-inline: 0; padding-inline: var(--space-3); border-left: var(--rule) solid var(--border); color: var(--muted); }
 .sources { display: grid; grid-template-columns: 80px minmax(0, 1fr); gap: var(--space-3); border-top: var(--rule) solid var(--border); margin-top: 64px; padding-top: var(--space-3); }
 .sources h2 { margin: 0; font-size: var(--text-body); }
-.sources ul { margin: 0; padding-left: var(--space-3); }
+.sources a { min-width: 44px; min-height: 44px; }
+.sources ul { list-style: disc; margin: 0; padding-left: var(--space-3); }
 .site-footer { display: flex; align-items: center; justify-content: space-between; padding-block: var(--space-3); border-top: var(--rule) solid var(--border); color: var(--muted); font-size: var(--text-small); }
 .footer-name { font: 700 var(--text-body)/1.2 Georgia, 'Times New Roman', serif; letter-spacing: -.04em; }
 .site-footer a { display: inline-flex; align-items: center; min-height: 44px; color: var(--muted); }

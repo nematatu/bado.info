@@ -1,4 +1,6 @@
 ---
+import { Link } from '@cloudflare/kumo/components/link';
+import { Text } from '@cloudflare/kumo/components/text';
 import Base from '../layouts/Base.astro';
 import { publishedArticles, dateLabel, articleUrl } from '../lib/articles';
 
@@ -13,12 +15,12 @@ const articles = await publishedArticles();
           <li>
             <article>
               <time datetime={article.data.publishedAt.toISOString()}>{dateLabel(article.data.publishedAt)}</time>
-              <h2><a href={articleUrl(article.id)}>{article.data.title}</a></h2>
-              <p>{article.data.summary}</p>
+              <h2><Link href={articleUrl(article.id)}>{article.data.title}</Link></h2>
+              <Text variant="secondary">{article.data.summary}</Text>
             </article>
           </li>
         ))}
       </ol>
-    ) : <p class="empty">公開された記事はまだありません。</p>}
+    ) : <Text variant="secondary" DANGEROUS_className="empty">公開された記事はまだありません。</Text>}
   </section>
 </Base>

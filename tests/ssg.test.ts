@@ -24,6 +24,16 @@ sources:
 ## 検証本文
 
 これは自動テスト専用の文章です。
+
+- 箇条書きの検証
+
+1. 番号付きの検証
+
+> 引用の検証
+
+~~~js
+const value = 1;
+~~~
 `;
 
   try {
@@ -49,7 +59,15 @@ sources:
     assert.match(article, /https:\/\/example.com\//);
     assert.match(article, /2026年10月25日/);
     assert.match(article, /rel="canonical" href="https:\/\/bado-info\.amtt\.workers\.dev\/articles\/2026\/public\/"/);
-    assert.doesNotMatch(article, /<script/);
+    assert.doesNotMatch(home + article + await read('about/index.html') + await read('404.html'), /<script|astro-island/);
+    assert.match(home, /<a[^>]*href="\/"[^>]*aria-current="page"[^>]*>記事<\/a>/);
+    assert.match(home, /<a[^>]*href="\/about\/"[^>]*>このサイトについて<\/a>/);
+    assert.match(article, /<a[^>]*href="\/"[^>]*>記事一覧へ<\/a>/);
+    assert.match(article, /<a[^>]*href="https:\/\/example.com\/"[^>]*>検証用出典<\/a>/);
+    assert.match(article, /<ul>\s*<li>箇条書きの検証<\/li>\s*<\/ul>/);
+    assert.match(article, /<ol>\s*<li>番号付きの検証<\/li>\s*<\/ol>/);
+    assert.match(article, /<blockquote>\s*<p>引用の検証<\/p>\s*<\/blockquote>/);
+    assert.match(article, /<pre[^>]*>[\s\S]*<code[^>]*>[\s\S]*value/);
     assert.match(rss, /検証専用の公開記事/);
     assert.match(rss, /&amp;/);
     assert.match(rss, /<link>https:\/\/bado-info\.amtt\.workers\.dev\/articles\/2026\/public\/<\/link>/);

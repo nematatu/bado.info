@@ -1,5 +1,7 @@
 ---
+import { Link } from '@cloudflare/kumo/components/link';
 import '../styles/global.css';
+import { Text } from '@cloudflare/kumo/components/text';
 
 interface Props { title?: string; description?: string }
 const { title = 'bado.info', description = 'バドミントンのニュースと考察。' } = Astro.props;
@@ -17,19 +19,19 @@ const isAbout = Astro.url.pathname === '/about/';
     <link rel="alternate" type="application/rss+xml" title="bado.info" href="/rss.xml" />
   </head>
   <body>
-    <a class="skip" href="#main">本文へ移動</a>
+    <Link className="skip" href="#main">本文へ移動</Link>
     <header class="masthead shell">
-      <a class="wordmark" href="/">bado.info</a>
+      <Link className="wordmark" href="/">bado.info</Link>
       <nav class="site-nav" aria-label="メインナビゲーション">
-        <a href="/" aria-current={isHome ? 'page' : undefined}>記事</a>
-        <a href="/about/" aria-current={isAbout ? 'page' : undefined}>このサイトについて</a>
-        <a href="/rss.xml">RSS</a>
+        <Link href="/" aria-current={isHome ? 'page' : undefined}>記事</Link>
+        <Link href="/about/" aria-current={isAbout ? 'page' : undefined}>このサイトについて</Link>
+        <Link href="/rss.xml">RSS</Link>
       </nav>
     </header>
     <main id="main" class="shell"><slot /></main>
     <footer class="site-footer shell">
-      <span class="footer-name">bado.info</span>
-      <a href="/about/">運営方針</a>
+      <Text as="span" DANGEROUS_className="footer-name">bado.info</Text>
+      <Link href="/about/">運営方針</Link>
     </footer>
   </body>
 </html>
