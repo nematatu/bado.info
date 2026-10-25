@@ -22,7 +22,9 @@ Astroの静的HTML、標準のリンク・見出し・リストを使う。独�
 | --- | --- |
 | Astro | SSG/Markdown/ルーティングに採用。独自ジェネレーターの代替。ビルド時依存。 |
 | Radix Colors | 配色の役割を共有するため採用。独自パレットの代替。CSSのみ。 |
-| Kumo / CLI Blocks | https://kumo-ui.com/installation/ と https://kumo-ui.com/cli/ を確認。React/React DOM/Phosphor peerとBase UI基盤。管理UIがなく、React hydrationとCSS追加は不要なので不採用。不要なBlocks生成もしない。 |
+| Kumo | 2.15.0の公式Link/Textを公開側のナビ、見出しリンク、要約、空状態、出典、フッターへ採用。granular importとstandalone CSSを使用。AstroのReact rendererでビルド時にHTML化。 |
+| Kumo CLI Blocks | https://kumo-ui.com/cli/ を確認。既存サイト枠を保持し、公式npmコンポーネントを直接import。Blocksのvendorコピーは作らない。 |
+| @astrojs/react / React / React DOM / Phosphor | KumoのReactコンポーネントを静的生成するため追加。PhosphorはKumo必須peer。client指示を付けず、読者用React実行やアイコン表示は追加しない。 |
 | Radix Primitives / Themes | https://www.radix-ui.com/ 。標準HTMLで足りるので不採用。KumoのBase UIと重ねない。 |
 | Lucide | https://lucide.dev/ 。文字ラベルで十分なためアイコン自体を追加しない。将来必要なら表示系列を1つにし、Phosphorとの混在を避ける。 |
 | Fluid Functionalism / Motion | https://www.fluidfunctionalism.com/ 、https://motion.dev/ 。意味のある動きの要件がなく不採用。 |
@@ -96,6 +98,10 @@ semantic HTML、h1からの見出し順序、Tab/Enter、可視フォーカス�
 
 ## コンポーネントの実採用状況
 
-package.jsonとsrcを照合。使用中はRadix ColorsのCSSパレットだけで、Radix Primitives/Themes・KumoのUIコンポーネントは未使用。AstroのHTMLテンプレートとサイト固有CSSで公開画面を構成している。「Radixのコンポーネントを使用済み」とは表現しない。原依頼9.2の公開側Astro/HTML基本、KumoはReact管理画面候補という条件に基づく判断。
+追加の明示指示に従い、Kumo公式Link/Textを採用。Radix Colorsは配色用に継続する。Radix Primitives/ThemesはKumoのBase UIと重複させない。ナビ・一覧見出し・一覧へ戻る・出典・運営方針のリンクは公式Link、要約・空状態・フッター名は公式Textを使用する。Markdown本文はAstroのMarkdownレンダラーが生成する。
 
 2026-10-25の明示依頼によりMarkdown表示テスト1件を公開用原稿へ追加した。ニュースと誤認しないタイトル・要約・本文を記載。以前の「検証原稿はすべて非公開」という記録は、この追加原稿には適用しない。自動テストfixtureと以前の.audit内原稿は公開対象外のまま。
+
+Kumoの色は既存Radix Sand/Jadeの役割変数へマッピングし、色トークンを競合させない。公式standalone CSSを読み込み、サイト固有の幅・余白・文字組みを上書きする。部品ソースはnpmの公式パッケージを利用し、CSSだけ模倣した独自部品へ置き換えない。検証結果は08に記録する。
+
+確認した一次資料（2026-10-25）：https://kumo-ui.com/installation/ 、https://kumo-ui.com/components/link/ 、https://kumo-ui.com/components/text/ 、https://kumo-ui.com/cli/ 、https://docs.astro.build/en/guides/integrations-guide/react/ 。

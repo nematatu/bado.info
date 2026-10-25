@@ -87,3 +87,13 @@ Apple HIG Layoutの公式Markdown本文もcurlで取得して確認した。以�
 実画面の背景rgb(253,253,252)に対するコントラスト比は、本文約16.02、補助文字約5.93、リンク約11.98。スクリーンリーダー・全ブラウザー・実機全端末の包括監査は未実施。
 
 最終ソースでdevbox run checkは0 errors/0 warnings/0 hints、devbox run testは1件成功、devbox run buildはstatic生成成功。公開用は記事0件、検証用は分離した記事1件。依存追加なし。読み取り専用レビューで公開を妨げる指摘なし。
+
+## Kumo公式コンポーネント採用後（2026-10-25）
+
+Kumo 2.15.0の公式Link/Textを直接import。@astrojs/react 7.1.1、React/React DOM 19.3.1で静的HTMLを生成する。依存はexact固定し、Devbox frozen-lockfile install成功。独立した実装worktreeでcheckは0 errors/warnings/hints、testは1件成功、build成功。統合先でもfrozen installとbuild成功。SSGテストにhref/ラベル/aria-current、リスト・番号・引用・コード維持、主要4HTMLにscript/astro-islandなしを追加した。
+
+IABでMarkdown表示テストを375/768/1280pxで確認。記事のclientWidth/scrollWidthは360/360、753/753、1265/1265。一覧は375/375、768/768、1280/1280。記事のKumo Linkは8個、一覧は7個。公式コンポーネントがdata-kumo-component="Link"付きのaとして描画されることを確認。Textは公式実装からp/spanへ静的生成される。Textには同名data属性がないため、その個数で採用を判定しない。
+
+フォントは375pxで14/17/22/32px、768pxで14/17/24/32px、1280pxで14/17/24/40px。ナビは44×48、約125×48、44×48px。見出し太字、箇条書きdisc、番号decimal、引用とコードを目視確認。Tabで本文へ移動にフォーカスし3px outline、Enterで#main・main上端0。Kumoのナビリンクで運営方針へ遷移しaria-current更新を確認した。
+
+本文/補助文字/リンクのコントラストは約16.02/5.93/11.98。3幅ともページ全体の横はみ出しなし。distにはReact renderer由来の未参照JSファイルが生成されるが、公開HTMLのscriptは0で、そのJSを読み込ませない。包括的なスクリーンリーダー監査は未実施。
