@@ -69,3 +69,11 @@ Void 1.2.1の静的デプロイは、アップロード後の検証でinheritanc
 Devbox checkは0 errors/0 warnings/0 hints、testは1件成功、build成功。公開用Markdownから/articles/markdown-test/を生成。Voidは今回もアップロード後にinheritance-source-changedで停止した。候補版64554574-0c28-46d8-b892-761c4631e354のバインディング、準備完了IDを確認し、プレビューのトップ・記事・運営方針・RSS・CSSがdistと完全一致することを検証後、既存Wranglerで同じ候補版へ100%切り替えた。Void停止の根本原因は未解決。
 
 公開後もトップ・記事HTMLとdistの一致、RSSがテスト記事1件であることを確認。IABで記事と一覧へのリンクを確認し、記事を375/768/1280pxで実測。clientWidth/scrollWidthは360/360、753/753、1265/1265で横スクロールなし。markdown-test-375.pngとmarkdown-test-1280.pngを保存。包括的な支援技術監査は未実施。独立レビューで公開原稿の公開阻害指摘なし、READMEと要件表の古い0件記録を修正した。
+
+## Kumo公式コンポーネントの公開（2026-10-25）
+
+4b11f23でKumo Link/Textを実採用、e9fc339で採用箇所と検証を記録しmainへpushした。今回のdevbox run -- pnpm exec void deploy --dir dist --platform cloudflareは、準備・アップロード・検証・ready・有効化まで完了しSuccessfully deployedを確認。Wranglerによる復旧操作は今回不要だった。これだけで以前の一時的な停止の根本原因が解消したとは判断しない。
+
+公開versionIdはe5db4a6e-458a-4aa6-8af3-abf21452a04c。本番のトップ・Markdownテスト記事・運営方針HTMLとdistの完全一致をcurlで確認。Kumo Linkのdata-kumo-componentがそれぞれ7/8/7個、各HTMLのscript/astro-islandは0。RSSは公開テスト記事1件。IABでも本番記事の375/1280pxで横はみ出しなし、Kumo Link8個、script0を確認した。screenshots/kumo-article-375.png、kumo-article-1280.png、kumo-public-preview.pngが今回の公開画面。
+
+実装コミットと独立レビュー対象SHAの一致を確認し、修正必須指摘なし。KumoCSSのresetで消えるMarkdownのリスト・見出し太字はサイトCSSで復元。包括的な支援技術監査は未実施。ドメイン操作なし。
